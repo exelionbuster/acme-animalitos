@@ -51,3 +51,5 @@ INSERT IGNORE INTO visits VALUES (1, 7, '2010-03-04', 'rabies shot');
 INSERT IGNORE INTO visits VALUES (2, 8, '2011-03-04', 'rabies shot');
 INSERT IGNORE INTO visits VALUES (3, 8, '2009-06-04', 'neutered');
 INSERT IGNORE INTO visits VALUES (4, 7, '2008-09-04', 'spayed');
+
+INSERT IGNORE INTO clinics VALUES (1, 'Clinica Reina Mercedes', 'Av. Reina Mercedes, 22', '+34678654563', 'example@us.es', '07:00:00', '21:00:00');

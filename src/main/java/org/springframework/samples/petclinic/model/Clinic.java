@@ -4,6 +4,7 @@ import java.time.LocalTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -15,6 +16,7 @@ import lombok.Data;
 
 @Data
 @Entity
+@Table(name = "clinics")
 public class Clinic extends NamedEntity{
 	
 	@Column(name = "name")
@@ -45,5 +47,10 @@ public class Clinic extends NamedEntity{
 	@NotEmpty
 	@DateTimeFormat(pattern = "HH:mm:ss")
 	private LocalTime clossingHour;
+	
+	@Column(name = "accountable")
+	private Integer accountable; //Esta puesto integer por la misma razon que esta puesto integer en clinic de la clase Worker, da el mismo error
+	
+	//Falta shop y daycare
 
 }

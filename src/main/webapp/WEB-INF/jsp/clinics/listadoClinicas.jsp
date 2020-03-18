@@ -13,12 +13,12 @@
     <table id="clinicsTable" class="table table-striped">
         <thead>
         <tr>
-            <th style="width: 150px;">Name</th>
+            <th style="width: 200px;">Name</th>
             <th style="width: 200px;">Address</th>
             <th style="width: 120px">Phone Number</th>
             <th style="width: 120px">Email</th>
-            <th>Opening Hour</th>
-            <th>Clossing Hour</th>
+            <th style="width: 50px;">Opening Hour</th>
+            <th style="width: 50px;">Clossing Hour</th>
         </tr>
         </thead>
         <tbody>

@@ -62,3 +62,5 @@ INSERT INTO visits(id,pet_id,visit_date,description) VALUES (2, 8, '2013-01-02',
 INSERT INTO visits(id,pet_id,visit_date,description) VALUES (3, 8, '2013-01-03', 'neutered');
 INSERT INTO visits(id,pet_id,visit_date,description) VALUES (4, 7, '2013-01-04', 'spayed');
 
+INSERT INTO clinics(id,name,address,phone_number,email,opening_hour,clossing_hour) VALUES (1, 'Clinica Reina Mercedes', 'Av. Reina Mercedes, 22', '+34678654563', 'example@us.es', '07:00:00', '21:00:00');
+
