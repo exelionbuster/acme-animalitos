@@ -28,6 +28,6 @@ public class Item extends NamedEntity {
     private String photo;
 
     @ManyToOne(optional = false)
-    @Column(name="shop")
+//    @Column(name="shop")
     private Shop shop;
 }

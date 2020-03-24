@@ -8,12 +8,14 @@ INSERT INTO authorities VALUES ('owner1','owner');
 INSERT INTO users(username,password,enabled) VALUES ('vet1','v3t',TRUE);
 INSERT INTO authorities VALUES ('vet1','veterinarian');
 
-INSERT INTO vets VALUES (1, 'James', 'Carter');
-INSERT INTO vets VALUES (2, 'Helen', 'Leary');
-INSERT INTO vets VALUES (3, 'Linda', 'Douglas');
-INSERT INTO vets VALUES (4, 'Rafael', 'Ortega');
-INSERT INTO vets VALUES (5, 'Henry', 'Stevens');
-INSERT INTO vets VALUES (6, 'Sharon', 'Jenkins');
+INSERT INTO clinics(id,name,address,phone_number,email,opening_hour,closing_hour) VALUES (1, 'Clinica Reina Mercedes', 'Av. Reina Mercedes, 22', '+34678654563', 'example@us.es', '07:00:00', '21:00:00');
+
+INSERT INTO vets(id,first_name,last_name,username,current_clinic_id) VALUES (1, 'James', 'Carter', 'jamescarter', 1);
+INSERT INTO vets(id,first_name,last_name,username,current_clinic_id) VALUES (2, 'Helen', 'Leary', 'helenleary', 1);
+INSERT INTO vets(id,first_name,last_name,username,current_clinic_id) VALUES (3, 'Linda', 'Douglas', 'lindadouglas', 1);
+INSERT INTO vets(id,first_name,last_name,username,current_clinic_id) VALUES (4, 'Rafael', 'Ortega', 'rafaelortega', 1);
+INSERT INTO vets(id,first_name,last_name,username,current_clinic_id) VALUES (5, 'Henry', 'Stevens', 'henrystevens', 1);
+INSERT INTO vets(id,first_name,last_name,username,current_clinic_id) VALUES (6, 'Sharon', 'Jenkins', 'sharonjenkins', 1);
 
 INSERT INTO specialties VALUES (1, 'radiology');
 INSERT INTO specialties VALUES (2, 'surgery');

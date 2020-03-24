@@ -28,10 +28,10 @@ public class DaycareBooking extends NamedEntity {
     //
 
     @ManyToOne(optional = false)
-    @Column(name="daycare")
+//    @Column(name="daycare")
     private Daycare daycare;
 
     @OneToOne(optional = false)
-    @Column(name = "pet")
+//    @Column(name = "pet")
     private Pet pet;
 }

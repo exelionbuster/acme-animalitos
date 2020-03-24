@@ -12,7 +12,7 @@ import lombok.Data;
 @Table(name = "shops")
 public class Shop extends BaseEntity{
 
-	@Column(name="clinic")
+//	@Column(name="clinic")
 	@OneToOne(optional=false)
 	private Clinic clinic;
 

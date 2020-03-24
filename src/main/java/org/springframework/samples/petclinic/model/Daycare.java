@@ -22,7 +22,7 @@ public class Daycare extends BaseEntity{
 	@Column(name = "max_pets")
 	private Integer maxPets;
 
-	@Column(name="clinic")
+//	@Column(name="clinic")
 	@OneToOne(optional=false)
 	private Clinic clinic;
 

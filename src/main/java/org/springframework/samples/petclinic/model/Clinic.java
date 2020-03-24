@@ -30,7 +30,7 @@ public class Clinic extends BaseEntity{
 	
 	@Column(name = "phoneNumber")
 	@NotBlank
-	@Digits(fraction = 0, integer = 10) //Asi esta puesto en la clase Owner (telephone)
+	@Digits(fraction = 0, integer = 10)
 	private String phoneNumber;
 	
 	@Column(name = "email")
@@ -48,7 +48,7 @@ public class Clinic extends BaseEntity{
 	@DateTimeFormat(pattern = "HH:mm")
 	private LocalTime closingHour;
     
-	@OneToOne
-	private Worker manager;
+//	@OneToOne
+//	private Worker manager;
 	
 }

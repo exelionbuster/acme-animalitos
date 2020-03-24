@@ -54,7 +54,7 @@ public class Vet extends Worker {
 	private Set<Specialty> specialties;
 
 	@ManyToOne
-	@Column(name = "current_clinic")
+//	@Column(name = "current_clinic")
 	private Clinic currentClinic;
 	
 	@OneToOne(cascade = CascadeType.ALL)
