@@ -21,15 +21,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlElement;
 
@@ -52,14 +48,6 @@ public class PetGroomer extends Worker {
 	@JoinTable(name = "pet_types", joinColumns = @JoinColumn(name = "pet_groomer_id"),
 			inverseJoinColumns = @JoinColumn(name = "pet_type_id"))
 	private Set<PetType> petTypes;
-
-	@ManyToOne
-	@Column(name = "current_clinic")
-	private Clinic currentClinic;
-
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "username", referencedColumnName = "username")
-	private User user;
 	
 	protected Set<PetType> getPetTypesInternal() {
 		if (this.petTypes == null) {
@@ -85,21 +73,5 @@ public class PetGroomer extends Worker {
 
 	public void addPetType(PetType petType) {
 		getPetTypesInternal().add(petType);
-	}
-	
-	public Clinic getCurrentClinic() {
-		return this.currentClinic;
-	}
-
-	public void setCurrentClinic(Clinic currentClinic) {
-		this.currentClinic = currentClinic;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 }

@@ -15,8 +15,11 @@
  */
 package org.springframework.samples.petclinic.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 
 /**
  * Simple JavaBean domain object representing a worker.
@@ -30,4 +33,16 @@ import javax.persistence.Table;
 @Table(name = "workers")
 public class Worker extends Person {
 
+    @ManyToOne
+    @Valid
+	@Column(name = "current_clinic")
+    private Clinic currentClinic;
+    
+    public Clinic getCurrentClinic() {
+		return this.currentClinic;
+	}
+
+	public void setCurrentClinic(Clinic currentClinic) {
+		this.currentClinic = currentClinic;
+	}
 }

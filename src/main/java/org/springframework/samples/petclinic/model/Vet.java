@@ -87,14 +87,6 @@ public class Vet extends Worker {
 		getSpecialtiesInternal().add(specialty);
 	}
 
-	public Clinic getCurrentClinic() {
-		return this.currentClinic;
-	}
-
-	public void setCurrentClinic(Clinic currentClinic) {
-		this.currentClinic = currentClinic;
-	}
-
 	public User getUser() {
 		return user;
 	}
