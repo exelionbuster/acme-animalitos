@@ -37,7 +37,7 @@ import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
 
 /**
- * Simple JavaBean domain object representing a veterinarian.
+ * Simple JavaBean domain object representing a pet groomer.
  *
  * @author Ken Krebs
  * @author Juergen Hoeller
@@ -45,48 +45,48 @@ import org.springframework.beans.support.PropertyComparator;
  * @author Arjen Poutsma
  */
 @Entity
-@Table(name = "vets")
-public class Vet extends Worker {
+@Table(name = "pet_groomers")
+public class PetGroomer extends Worker {
 
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "vet_specialties", joinColumns = @JoinColumn(name = "vet_id"),
-			inverseJoinColumns = @JoinColumn(name = "specialty_id"))
-	private Set<Specialty> specialties;
+	@JoinTable(name = "pet_types", joinColumns = @JoinColumn(name = "pet_groomer_id"),
+			inverseJoinColumns = @JoinColumn(name = "pet_type_id"))
+	private Set<PetType> petTypes;
 
 	@ManyToOne
 	@Column(name = "current_clinic")
 	private Clinic currentClinic;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "username", referencedColumnName = "username")
 	private User user;
-
-	protected Set<Specialty> getSpecialtiesInternal() {
-		if (this.specialties == null) {
-			this.specialties = new HashSet<>();
+	
+	protected Set<PetType> getPetTypesInternal() {
+		if (this.petTypes == null) {
+			this.petTypes = new HashSet<>();
 		}
-		return this.specialties;
+		return this.petTypes;
 	}
 
-	protected void setSpecialtiesInternal(Set<Specialty> specialties) {
-		this.specialties = specialties;
+	protected void setPetTypesInternal(Set<PetType> petTypes) {
+		this.petTypes = petTypes;
 	}
 
 	@XmlElement
-	public List<Specialty> getSpecialties() {
-		List<Specialty> sortedSpecs = new ArrayList<>(getSpecialtiesInternal());
-		PropertyComparator.sort(sortedSpecs, new MutableSortDefinition("name", true, true));
-		return Collections.unmodifiableList(sortedSpecs);
+	public List<PetType> getPetTypes() {
+		List<PetType> sortedPetTypes = new ArrayList<PetType>(getPetTypesInternal());
+		PropertyComparator.sort(sortedPetTypes, new MutableSortDefinition("name", true, true));
+		return Collections.unmodifiableList(sortedPetTypes);
 	}
 
-	public int getNrOfSpecialties() {
-		return getSpecialtiesInternal().size();
+	public int getNrOfPetTypes() {
+		return getPetTypesInternal().size();
 	}
 
-	public void addSpecialty(Specialty specialty) {
-		getSpecialtiesInternal().add(specialty);
+	public void addPetType(PetType petType) {
+		getPetTypesInternal().add(petType);
 	}
-
+	
 	public Clinic getCurrentClinic() {
 		return this.currentClinic;
 	}
