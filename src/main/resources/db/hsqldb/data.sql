@@ -10,6 +10,13 @@ INSERT INTO authorities VALUES ('vet1','veterinarian');
 
 INSERT INTO clinics(id,name,address,phone_number,email,opening_hour,closing_hour) VALUES (1, 'Clinica Reina Mercedes', 'Av. Reina Mercedes, 22', '+34678654563', 'example@us.es', '07:00:00', '21:00:00');
 
+INSERT INTO users(username,password,enabled) VALUES ('jamescarter', 'jamescarter', true);
+INSERT INTO users(username,password,enabled) VALUES ('helenleary', 'helenleary', true);
+INSERT INTO users(username,password,enabled) VALUES ('lindadouglas', 'lindadouglas', true);
+INSERT INTO users(username,password,enabled) VALUES ('rafaelortega', 'rafaelortega', true);
+INSERT INTO users(username,password,enabled) VALUES ('henrystevens', 'henrystevens', true);
+INSERT INTO users(username,password,enabled) VALUES ('sharonjenkins', 'sharonjenkins', true);
+
 INSERT INTO vets(id,first_name,last_name,username,current_clinic_id) VALUES (1, 'James', 'Carter', 'jamescarter', 1);
 INSERT INTO vets(id,first_name,last_name,username,current_clinic_id) VALUES (2, 'Helen', 'Leary', 'helenleary', 1);
 INSERT INTO vets(id,first_name,last_name,username,current_clinic_id) VALUES (3, 'Linda', 'Douglas', 'lindadouglas', 1);
