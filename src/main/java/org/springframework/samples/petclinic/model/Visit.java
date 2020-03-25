@@ -109,5 +109,15 @@ public class Visit extends BaseEntity {
 	public void setPet(Pet pet) {
 		this.pet = pet;
 	}
+	
+	@ManyToOne
+	@JoinColumn(name = "vet_id")
+	private Vet vet;
+	public Vet getVet() {
+		return this.vet;
+	}
 
+	public void setVet(Vet vet) {
+		this.vet = vet;
+	}
 }
