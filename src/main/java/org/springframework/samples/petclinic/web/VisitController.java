@@ -39,10 +39,12 @@ import org.springframework.web.bind.annotation.*;
 public class VisitController {
 
 	private final PetService petService;
+	private final VetService vetService;
 
 	@Autowired
-	public VisitController(PetService petService) {
+	public VisitController(PetService petService, VetService vetService) {
 		this.petService = petService;
+		this.vetService = vetService;
 	}
 
 	@InitBinder
