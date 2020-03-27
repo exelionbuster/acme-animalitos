@@ -117,7 +117,4 @@ public class Visit extends BaseEntity {
 		return this.vet;
 	}
 	
-	public void setVet(Vet vet) {
-		this.vet = vet;
-	}
 }
