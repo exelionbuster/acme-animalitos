@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -28,10 +29,34 @@ public class DaycareBooking extends NamedEntity {
     //
 
     @ManyToOne(optional = false)
-//    @Column(name="daycare")
+    @JoinColumn(name="daycare")
     private Daycare daycare;
 
     @OneToOne(optional = false)
-//    @Column(name = "pet")
+    @JoinColumn(name = "pet")
     private Pet pet;
+    
+    public Pet getPet() {
+		return this.pet;
+	}
+    
+    public void setPet(Pet pet) {
+		this.pet = pet;
+	}
+    
+    public LocalDate getStart() {
+		return this.startDate;
+	}
+
+	public void setStart(final LocalDate startDate) {
+		this.startDate = startDate;
+	}
+
+	public LocalDate getEnd() {
+		return this.endDate;
+	}
+
+	public void setEnd(final LocalDate endDate) {
+		this.endDate = endDate;
+	}
 }
