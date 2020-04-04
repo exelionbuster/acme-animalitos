@@ -39,5 +39,7 @@ public interface ClinicRepository {
 	 * @return a <code>Collection</code> of <code>Vet</code>s
 	 */
 	Collection<Clinic> findAll() throws DataAccessException;
+	
+	Clinic findById(Long clinicId) throws DataAccessException;
 
 }

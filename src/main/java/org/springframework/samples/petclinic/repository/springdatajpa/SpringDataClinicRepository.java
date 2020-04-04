@@ -21,6 +21,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.samples.petclinic.model.Clinic;
+import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.repository.ClinicRepository;
 import org.springframework.samples.petclinic.repository.VetRepository;

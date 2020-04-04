@@ -52,11 +52,15 @@ public class ClinicService {
 	public ClinicService(ClinicRepository clinicRepository) {
 		this.clinicRepository = clinicRepository;
 	}		
-
+	
+	@Transactional(readOnly=true)
+	public Clinic findClinic(Long clinicId) throws DataAccessException {
+		return clinicRepository.findById(clinicId);
+	}
+	
 	@Transactional(readOnly = true)	
 	public Collection<Clinic> findClinics() throws DataAccessException {
 		return clinicRepository.findAll();
 	}
 	
-
 }
