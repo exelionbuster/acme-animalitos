@@ -15,13 +15,18 @@
  */
 package org.springframework.samples.petclinic.web;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.model.Clinic;
 import org.springframework.samples.petclinic.model.Pet;
+import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
+import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.samples.petclinic.service.PetService;
 import org.springframework.samples.petclinic.service.VetService;
 import org.springframework.stereotype.Controller;
@@ -40,11 +45,13 @@ public class VisitController {
 
 	private final PetService petService;
 	private final VetService vetService;
+	private final ClinicService clinicService;
 
 	@Autowired
-	public VisitController(PetService petService, VetService vetService) {
+	public VisitController(PetService petService, VetService vetService, ClinicService clinicService) {
 		this.petService = petService;
 		this.vetService = vetService;
+		this.clinicService = clinicService;
 	}
 
 	@InitBinder
@@ -68,9 +75,18 @@ public class VisitController {
 		return visit;
 	}
 
+	//TOOD: discutir creación de visit (clinicId y lista de vets)
 	// Spring MVC calls method loadPetWithVisit(...) before initNewVisitForm is called
 	@GetMapping(value = "/owners/*/pets/{petId}/visits/new")
 	public String initNewVisitForm(@PathVariable("petId") int petId, Map<String, Object> model) {
+		Visit visit = new Visit();
+		Pet pet = this.petService.findPetById(petId);
+		visit.setPet(pet);
+		model.put("visit", visit);
+		
+		Collection<Clinic> clinics = this.clinicService.findClinics();
+		model.put("clinics", clinics);
+				
 		return "pets/createOrUpdateVisitForm";
 	}
 
@@ -81,6 +97,7 @@ public class VisitController {
 			return "pets/createOrUpdateVisitForm";
 		}
 		else {
+			
 			this.petService.saveVisit(visit);
 			return "redirect:/owners/{ownerId}";
 		}
@@ -91,5 +108,6 @@ public class VisitController {
 		model.put("visits", this.petService.findPetById(petId).getVisits());
 		return "visitList";
 	}
+	
 
 }

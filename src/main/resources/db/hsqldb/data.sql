@@ -9,6 +9,7 @@ INSERT INTO users(username,password,enabled) VALUES ('vet1','v3t',TRUE);
 INSERT INTO authorities VALUES ('vet1','veterinarian');
 
 INSERT INTO clinics(id,name,address,phone_number,email,opening_hour,closing_hour) VALUES (1, 'Clinica Reina Mercedes', 'Av. Reina Mercedes, 22', '+34678654563', 'example@us.es', '07:00:00', '21:00:00');
+INSERT INTO clinics(id,name,address,phone_number,email,opening_hour,closing_hour) VALUES (2, 'Clinica Pablo Olavides', 'Av. Monstruosa, 23', '+34666666666', 'example@us.es', '09:00:00', '18:00:00');
 
 INSERT INTO users(username,password,enabled) VALUES ('jamescarter', 'jamescarter', true);
 INSERT INTO users(username,password,enabled) VALUES ('helenleary', 'helenleary', true);

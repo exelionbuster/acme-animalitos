@@ -38,6 +38,15 @@
             <div class="form-group has-feedback">
                 <petclinic:inputField label="Date" name="date"/>
                 <petclinic:inputField label="Description" name="description"/>
+                
+                <select name="clinic" class="form-control">
+          			<c:forEach var="clinic" items="${clinics}">
+            			<option value="${clinic.id}">${clinic.name}</option>
+          			</c:forEach>
+        		</select>
+                
+				<%-- <petclinic:selectField label="Clinic" name="clinic" size="1" names="${clinics}"/> --%>
+
             </div>
 
             <div class="form-group">
@@ -54,6 +63,7 @@
             <tr>
                 <th>Date</th>
                 <th>Description</th>
+                <th>Vet</th>
             </tr>
             <c:forEach var="visit" items="${visit.pet.visits}">
                 <c:if test="${!visit['new']}">

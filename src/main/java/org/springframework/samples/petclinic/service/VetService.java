@@ -15,7 +15,7 @@
  */
 package org.springframework.samples.petclinic.service;
 
-import java.util.Collection;
+import java.util.Collection; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -57,8 +57,8 @@ public class VetService {
 	}
 	
 	@Transactional
-	public Collection<Vet> findVetsByClinic(String clinicId) throws DataAccessException {
-		return vetRepository.findAll();
+	public Collection<Vet> findVetsByClinic(int clinicId) throws DataAccessException {
+		return vetRepository.findVetsByClinic(clinicId);
 	}
 
 }
