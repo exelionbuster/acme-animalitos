@@ -20,7 +20,9 @@ import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.samples.petclinic.model.Clinic;
 import org.springframework.samples.petclinic.model.Vet;
+import org.springframework.samples.petclinic.repository.ClinicRepository;
 import org.springframework.samples.petclinic.repository.VetRepository;
 
 /**
@@ -29,10 +31,6 @@ import org.springframework.samples.petclinic.repository.VetRepository;
  * @author Michael Isvy
  * @since 15.1.2013
  */
-public interface SpringDataVetRepository extends VetRepository, Repository<Vet, Integer> {
-	
-	@Override
-	@Query("SELECT vet FROM Vet vet where vet.currentClinic.id = clinicId")
-	public Collection<Vet> findVetsByClinic(@Param("clinicId") int clinicId);
+public interface SpringDataClinicRepository extends ClinicRepository, Repository<Clinic, Integer> {
 
 }
