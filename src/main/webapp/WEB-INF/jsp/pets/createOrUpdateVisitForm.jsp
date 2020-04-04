@@ -44,9 +44,7 @@
             			<option value="${clinic.id}">${clinic.name}</option>
           			</c:forEach>
         		</select>
-                
-				<%-- <petclinic:selectField label="Clinic" name="clinic" size="1" names="${clinics}"/> --%>
-
+        		        		                
             </div>
 
             <div class="form-group">
