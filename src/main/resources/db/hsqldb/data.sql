@@ -21,9 +21,9 @@ INSERT INTO users(username,password,enabled) VALUES ('sharonjenkins', 'sharonjen
 INSERT INTO vets(id,first_name,last_name,username,current_clinic_id) VALUES (1, 'James', 'Carter', 'jamescarter', 1);
 INSERT INTO vets(id,first_name,last_name,username,current_clinic_id) VALUES (2, 'Helen', 'Leary', 'helenleary', 1);
 INSERT INTO vets(id,first_name,last_name,username,current_clinic_id) VALUES (3, 'Linda', 'Douglas', 'lindadouglas', 1);
-INSERT INTO vets(id,first_name,last_name,username,current_clinic_id) VALUES (4, 'Rafael', 'Ortega', 'rafaelortega', 1);
-INSERT INTO vets(id,first_name,last_name,username,current_clinic_id) VALUES (5, 'Henry', 'Stevens', 'henrystevens', 1);
-INSERT INTO vets(id,first_name,last_name,username,current_clinic_id) VALUES (6, 'Sharon', 'Jenkins', 'sharonjenkins', 1);
+INSERT INTO vets(id,first_name,last_name,username,current_clinic_id) VALUES (4, 'Rafael', 'Ortega', 'rafaelortega', 2);
+INSERT INTO vets(id,first_name,last_name,username,current_clinic_id) VALUES (5, 'Henry', 'Stevens', 'henrystevens', 2);
+INSERT INTO vets(id,first_name,last_name,username,current_clinic_id) VALUES (6, 'Sharon', 'Jenkins', 'sharonjenkins', 2);
 
 INSERT INTO specialties VALUES (1, 'radiology');
 INSERT INTO specialties VALUES (2, 'surgery');

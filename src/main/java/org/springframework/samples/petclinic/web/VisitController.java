@@ -21,6 +21,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Clinic;
 import org.springframework.samples.petclinic.model.Pet;
@@ -29,6 +30,7 @@ import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.samples.petclinic.service.PetService;
 import org.springframework.samples.petclinic.service.VetService;
+import org.springframework.samples.petclinic.service.VisitService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -47,12 +49,14 @@ public class VisitController {
 	private final PetService petService;
 	private final VetService vetService;
 	private final ClinicService clinicService;
+	private final VisitService visitService;
 
 	@Autowired
-	public VisitController(PetService petService, VetService vetService, ClinicService clinicService) {
+	public VisitController(PetService petService, VetService vetService, ClinicService clinicService, VisitService visitService) {
 		this.petService = petService;
 		this.vetService = vetService;
 		this.clinicService = clinicService;
+		this.visitService = visitService;
 	}
 
 	@InitBinder
@@ -84,6 +88,7 @@ public class VisitController {
 		Pet pet = this.petService.findPetById(petId);
 		visit.setPet(pet);
 		model.put("visit", visit);
+		model.put("edit", false);
 		
 		Collection<Clinic> clinics = this.clinicService.findClinics();
 		model.put("clinics", clinics);
@@ -97,6 +102,8 @@ public class VisitController {
 		if (result.hasErrors()) {
 			Collection<Clinic> clinics = this.clinicService.findClinics();
 			model.put("clinics", clinics);
+			model.put("edit", false);
+
 			return "pets/createOrUpdateVisitForm";
 		}
 		else {
@@ -111,5 +118,42 @@ public class VisitController {
 		return "visitList";
 	}
 	
+	//TODO: REVISAR
+	
+	@GetMapping(value = "/owners/*/pets/{petId}/visits/{visitId}/edit")
+	public String initEditVisitForm(@PathVariable("visitId") int visitId, ModelMap model) {
+		Visit visit = this.visitService.findByVisitId(visitId);
+		model.put("visit", visit);
+		Collection<Vet> vets = this.vetService.findVetsByClinic(visit.getClinic().getId());
+		model.put("vets", vets);
+		model.put("edit", true);
+		
+		return "pets/createOrUpdateVisitForm";
+	}
+	
+	@PostMapping(value = "/owners/{ownerId}/pets/{petId}/visits/{visitId}/edit")
+	public String editVisits(@Valid Visit visit, @PathVariable("visitId") int visitId, BindingResult result, ModelMap model) {
+		if (result.hasErrors()) {
+			model.put("visit", visit);
+			Collection<Vet> vets = this.vetService.findVetsByClinic(visitId);
+			model.put("vets", vets);
+			model.put("edit", true);
 
+			return "pets/createOrUpdateVisitForm";
+		}else {
+            Visit visitToUpdate=this.visitService.findByVisitId(visitId);
+			BeanUtils.copyProperties(visit, visitToUpdate, "id","date","description", "clinic");
+			this.petService.saveVisit(visitToUpdate);
+			return "redirect:/owners/{ownerId}";
+		}
+	}
+	
+	@GetMapping( value = "/owners/{ownerId}/pets/{petId}/visits/{visitId}/delete")
+	public String deleteVisit(@PathVariable("visitId") int visitId, ModelMap model) {	
+		Visit visit = this.visitService.findByVisitId(visitId);
+		this.visitService.deleteVisit(visit);
+		return "redirect:/owners/{ownerId}";
+		
+	}
+	
 }
