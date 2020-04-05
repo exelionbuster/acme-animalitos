@@ -43,4 +43,10 @@ public interface VisitRepository {
 
 	List<Visit> findByPetId(Integer petId);
 	
+	//TODO: creado delete y servicio de Visit
+	
+	Visit findById(int id) throws DataAccessException;
+	
+	void delete(Visit visit) throws DataAccessException;
+	
 }

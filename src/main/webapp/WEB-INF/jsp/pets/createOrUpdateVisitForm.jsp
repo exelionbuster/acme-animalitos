@@ -39,11 +39,23 @@
                 <petclinic:inputField label="Date" name="date"/>
                 <petclinic:inputField label="Description" name="description"/>
                 
-                <select name="clinic" class="form-control">
-          			<c:forEach var="clinic" items="${clinics}">
-            			<option value="${clinic.id}">${clinic.name}</option>
-          			</c:forEach>
-        		</select>
+                <c:if test="${!edit}">
+                	<select name="clinic" class="form-control">
+          				<c:forEach var="clinic" items="${clinics}">
+            				<option value="${clinic.id}">${clinic.name}</option>
+          				</c:forEach>
+        			</select>
+        		</c:if>
+        		
+        		<c:if test="${edit}">
+        			<petclinic:selectField label="Vet" name="vet" size="1" names="${vets}"/>
+				</c:if>
+				
+<%--         		<select name="vet" class="form-control">
+        			<c:forEach var="vet" items="${vets}">
+        				<option value="${vet.id}">${vet.name}</option>
+        			</c:forEach>
+        		</select> --%>
         		        		                
             </div>
 
