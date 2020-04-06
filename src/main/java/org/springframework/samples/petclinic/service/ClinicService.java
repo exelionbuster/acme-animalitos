@@ -63,4 +63,9 @@ public class ClinicService {
 		return clinicRepository.findAll();
 	}
 	
+	@Transactional(readOnly = true)	
+	public Collection<Clinic> findClinicsWithShop() throws DataAccessException {
+		return clinicRepository.findClinicsWithShop();
+	}
+	
 }

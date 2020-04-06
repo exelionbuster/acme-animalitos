@@ -2,8 +2,13 @@ package org.springframework.samples.petclinic.model;
 
 import java.time.LocalTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Email;
@@ -46,6 +51,10 @@ public class Clinic extends BaseEntity{
 	@NotEmpty
 	@DateTimeFormat(pattern = "HH:mm")
 	private LocalTime closingHour;
+	
+	@OneToOne(optional=true)
+	@JoinColumn(name = "shop_id")
+	private Shop shop;
     
 //	@OneToOne
 //	private Worker manager;

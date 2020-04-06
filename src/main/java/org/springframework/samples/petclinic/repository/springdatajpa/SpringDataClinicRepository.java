@@ -33,5 +33,9 @@ import org.springframework.samples.petclinic.repository.VetRepository;
  * @since 15.1.2013
  */
 public interface SpringDataClinicRepository extends ClinicRepository, Repository<Clinic, Integer> {
+	
+	@Override
+	@Query("SELECT c FROM Clinic c ")
+	public Collection<Clinic> findClinicsWithShop();
 
 }
