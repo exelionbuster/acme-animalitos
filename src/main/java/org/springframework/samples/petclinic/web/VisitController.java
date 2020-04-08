@@ -16,7 +16,6 @@
 package org.springframework.samples.petclinic.web;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -149,9 +148,10 @@ public class VisitController {
 	}
 	
 	@GetMapping( value = "/owners/{ownerId}/pets/{petId}/visits/{visitId}/delete")
-	public String deleteVisit(@PathVariable("visitId") int visitId, ModelMap model) {	
+	public String deleteVisit(@PathVariable("visitId") int visitId, @PathVariable("petId") int petId, ModelMap model) {	
 		Visit visit = this.visitService.findByVisitId(visitId);
 		this.visitService.deleteVisit(visit);
+		
 		return "redirect:/owners/{ownerId}";
 		
 	}

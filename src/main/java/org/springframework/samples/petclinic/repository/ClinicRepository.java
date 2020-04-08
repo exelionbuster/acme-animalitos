@@ -42,4 +42,6 @@ public interface ClinicRepository {
 	
 	Clinic findById(Long clinicId) throws DataAccessException;
 
+	Collection<Clinic> findClinicsWithShop() throws DataAccessException;
+
 }
